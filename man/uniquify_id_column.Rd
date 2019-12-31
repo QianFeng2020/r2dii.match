@@ -52,7 +52,10 @@ loanbook_demo \%>\%
 
 Other internal-ish: 
 \code{\link{bridge_sector}()},
-\code{\link{replace_customer_name}()},
-\code{\link{score_similarity}()}
+\code{\link{match_all_against_all}()},
+\code{\link{restructure_ald_for_matching}()},
+\code{\link{restructure_loanbook_for_matching}()},
+\code{\link{score_similarity}()},
+\code{\link{to_alias}()}
 }
 \concept{internal-ish}

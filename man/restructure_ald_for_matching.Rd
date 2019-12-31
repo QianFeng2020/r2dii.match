@@ -2,7 +2,7 @@
 % Please edit documentation in R/restructure_loanbook_for_matching.R
 \name{restructure_ald_for_matching}
 \alias{restructure_ald_for_matching}
-\title{Prepares asset-level data (ald) for the fuzzy matching process}
+\title{Restructure an asset-level dataset (ald) in preparation for fuzzy matching}
 \usage{
 restructure_ald_for_matching(data)
 }
@@ -25,8 +25,12 @@ ald_demo \%>\%
 \seealso{
 \link[r2dii.dataraw:ald_demo]{r2dii.dataraw::ald_demo}.
 
-Other user-oriented: 
+Other internal-ish: 
+\code{\link{bridge_sector}()},
 \code{\link{match_all_against_all}()},
-\code{\link{restructure_loanbook_for_matching}()}
+\code{\link{restructure_loanbook_for_matching}()},
+\code{\link{score_similarity}()},
+\code{\link{to_alias}()},
+\code{\link{uniquify_id_column}()}
 }
-\concept{user-oriented}
+\concept{internal-ish}

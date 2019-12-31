@@ -1,10 +1,10 @@
-#' Prepares asset-level data (ald) for the fuzzy matching process
+#' Restructure an asset-level dataset (ald) in preparation for fuzzy matching
 #'
 #' This function prepares asset-level data (ald) for the fuzzy matching process.
 #'
 #' @param data A dataframe. Should be an asset-level dataset.
 #'
-#' @family user-oriented
+#' @family internal-ish
 #' @seealso [r2dii.dataraw::ald_demo].
 #'
 #' @return A dataframe with unique combinations of `name` + `sector`, including
@@ -22,10 +22,10 @@ restructure_ald_for_matching <- function(data) {
     check_crucial_names(c("name_company", "sector")) %>%
     select(name = .data$name_company, .data$sector) %>%
     distinct() %>%
-    add_simpler_name()
+    add_alias()
 }
 
-#' Prepare a loanbook dataset for the fuzzy matching process
+#' Restructure  loanbook dataset (lbk) in preparation for fuzzy matching
 #'
 #' This function prepares a loanbook dataset for the fuzzy matching process.
 #'
@@ -34,7 +34,7 @@ restructure_ald_for_matching <- function(data) {
 #'   columns of a particular direct loantaker or ultimate parent. To overwrite
 #'   only `sector`, the value in the `name` column should be `NA`.
 #'
-#' @family user-oriented
+#' @family internal-ish
 #' @seealso [r2dii.dataraw::loanbook_description]
 #'
 #' @return A dataframe with unique combinations of `name` + `sector`, including
@@ -68,7 +68,7 @@ restructure_loanbook_for_matching <- function(data, overwrite = NULL) {
     select(output_cols_for_prepare_loanbook()) %>%
     distinct() %>%
     may_overwrite_name_and_sector(overwrite = overwrite) %>%
-    add_simpler_name()
+    add_alias()
 }
 
 may_add_sector_and_borderline <- function(data) {
@@ -106,8 +106,8 @@ already_has_sector_and_borderline <- function(data) {
   has_name(data, "sector") & has_name(data, "borderline")
 }
 
-add_simpler_name <- function(data) {
-  mutate(data, simpler_name = replace_customer_name(.data$name))
+add_alias <- function(data) {
+  mutate(data, alias = to_alias(.data$name))
 }
 
 check_prepare_loanbook_data <- function(data) {

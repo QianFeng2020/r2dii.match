@@ -2,7 +2,7 @@
 % Please edit documentation in R/restructure_loanbook_for_matching.R
 \name{restructure_loanbook_for_matching}
 \alias{restructure_loanbook_for_matching}
-\title{Prepare a loanbook dataset for the fuzzy matching process}
+\title{Restructure  loanbook dataset (lbk) in preparation for fuzzy matching}
 \usage{
 restructure_loanbook_for_matching(data, overwrite = NULL)
 }
@@ -32,8 +32,12 @@ loanbook_demo \%>\%
 \seealso{
 \link[r2dii.dataraw:loanbook_description]{r2dii.dataraw::loanbook_description}
 
-Other user-oriented: 
+Other internal-ish: 
+\code{\link{bridge_sector}()},
 \code{\link{match_all_against_all}()},
-\code{\link{restructure_ald_for_matching}()}
+\code{\link{restructure_ald_for_matching}()},
+\code{\link{score_similarity}()},
+\code{\link{to_alias}()},
+\code{\link{uniquify_id_column}()}
 }
-\concept{user-oriented}
+\concept{internal-ish}
