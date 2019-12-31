@@ -62,8 +62,8 @@ cols_expr <- function(.data) {
     purrr::map_chr(typeof) %>%
     strsplit("") %>%
     purrr::map_chr(1)
-  .cols <- glue::glue_collapse(glue::glue("{names(types)} = \"{types}\""), ", ")
-  rlang::parse_expr(glue::glue("readr::cols({.cols})"))
+  .cols <- glue::glue_collapse(glue("{names(types)} = \"{types}\""), ", ")
+  rlang::parse_expr(glue("readr::cols({.cols})"))
 }
 
 modify_cols_as_ref <- function(.data, ref) {

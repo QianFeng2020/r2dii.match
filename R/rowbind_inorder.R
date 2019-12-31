@@ -55,7 +55,7 @@ rowbind_inorder <- function(.x, order = NULL) {
       sep = ", ", last = " and "
     )
     if (any(lacks_rowid)) {
-      rlang::warn(glue::glue("Adding `rowid` to {nms}"))
+      rlang::warn(glue("Adding `rowid` to {nms}"))
     }
 
     purrr::modify_if(.x, lacks_rowid, tibble::rowid_to_column)
